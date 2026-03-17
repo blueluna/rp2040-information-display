@@ -7,6 +7,7 @@ resolver = "2"
 
 [[bin]]
 name = "rp2040-badger-w"
+path = "src/bin/badger.rs"
 test = false
 bench = false
 
@@ -26,12 +27,13 @@ embedded-hal = "1.0.0"
 embedded-hal-async = "1.0.0"
 embedded-io = "0.7"
 embedded-io-async = "0.7"
+embedded-alloc = "0.5"
 embedded-storage = "0.3.1"
 
 embassy-embedded-hal = "0.5.0"
 embassy-executor = { version = "0.9", features = ["arch-cortex-m", "executor-thread", "defmt", "executor-interrupt"] }
 embassy-futures = "0.1"
-embassy-net = { version = "0.8", features = ["defmt", "dhcpv4", "medium-ethernet", "proto-ipv4", "dns", "udp"] }
+embassy-net = { version = "0.8", features = ["defmt", "dhcpv4", "medium-ethernet", "proto-ipv4", "dns", "udp", "tcp"] }
 embassy-rp = { version = "0.9", features = ["defmt", "unstable-pac", "time-driver", "critical-section-impl", "rp2040"] }
 embassy-sync = { version = "0.7" }
 embassy-time = { version = "0.5", features = ["defmt", "defmt-timestamp-uptime"] }
@@ -41,6 +43,11 @@ heapless = "0.9"
 panic-probe = { version = "1.0", features = ["print-defmt"] }
 pcf85063a = { version = "0.1.1", features = ["defmt"] }
 portable-atomic = { version = "1", features = ["critical-section"] }
+
+rust-mqtt = { version = "0.4.1", default-features = false, features = ["v5", "alloc", "defmt"] }
+
+serde = { version = "1.0", default-features = false, features = ["derive"] }
+serde-json-core = "0.6.0"
 
 sntpc = { version = "0.8", default-features = false, features = ["defmt"] }
 sntpc-net-embassy = { version = "0.8", features = ["defmt"] }
